@@ -191,3 +191,4 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 >>>>>>> 1f228d0 (Python automatetheboringstuff chap1 and chap2)
+!/fiveTime.py
