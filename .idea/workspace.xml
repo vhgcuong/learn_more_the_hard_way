@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1eac4854-c2d9-444f-92a4-8f9bf2fd6e3d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/abcdCallStack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/exitExample.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/guessTheNumber.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/helloFunc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/magic8Ball.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/zigzag.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rust_learn_more_the_hard_way/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rust_learn_more_the_hard_way/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fiveTime.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/fiveTime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/python_learn_more_the_hard_way/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "git-widget-placeholder": "master"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
