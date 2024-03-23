@@ -4,6 +4,10 @@ mod zigzag;
 mod conway;
 
 fn main() {
+    println!("Zigzag: 1");
+    println!("Conway: 1");
+
+
     let mut input = String::new();
 
     println!("Nhap mot so nguyen: ");
@@ -19,12 +23,12 @@ fn main() {
         }
     };
 
-    println!("Zigzag: 1");
-    println!("Conway: 1");
-
     match input {
         1 => zigzag::zigzag(),
-        2 => conway::generate_grid(3, 3),
+        2 => {
+            let grid = conway::generate_grid(10, 10);
+            conway::print_grid(grid);
+        },
         _ => return
     }
 
