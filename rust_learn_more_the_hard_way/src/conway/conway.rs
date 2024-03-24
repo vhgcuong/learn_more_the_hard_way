@@ -43,37 +43,37 @@ pub fn calculate(grid: Vec<Vec<String>>) -> Vec<Vec<String>> {
             // Count number of living neighbors:
             let mut num_neighbors = 0;
             println!("[{x} {y}] - [{left} {right} {above} {below}");
-            // if grid[left][above] == "#" {
-            //     num_neighbors += 1;
-            // }
-            // if grid[x][above] == "#" {
-            //     num_neighbors += 1;
-            // }
-            // if grid[right][above] == "#" {
-            //     num_neighbors += 1;
-            // }
-            // if grid[left][y] == "#" {
-            //     num_neighbors += 1;
-            // }
-            // if grid[right][y] == "#" {
-            //     num_neighbors += 1;
-            // }
-            // if grid[left][below] == "#" {
-            //     num_neighbors += 1;
-            // }
-            // if grid[x][below] == "#" {
-            //     num_neighbors += 1;
-            // }
-            // if grid[right][below] == "#" {
-            //     num_neighbors += 1;
-            // }
-            //
-            // // Set cell based on Conway's Game of Life rules:
-            // match (grid[x][y].as_ref(), num_neighbors) {
-            //     ("#", 2|3) => next_cells[x][y] = String::from("#"),
-            //     ("_", 3) => next_cells[x][y] = String::from("#"),
-            //     _ => next_cells[x][y] = String::from("_")
-            // }
+            if grid[left][above] == "#" {
+                num_neighbors += 1;
+            }
+            if grid[x][above] == "#" {
+                num_neighbors += 1;
+            }
+            if grid[right][above] == "#" {
+                num_neighbors += 1;
+            }
+            if grid[left][y] == "#" {
+                num_neighbors += 1;
+            }
+            if grid[right][y] == "#" {
+                num_neighbors += 1;
+            }
+            if grid[left][below] == "#" {
+                num_neighbors += 1;
+            }
+            if grid[x][below] == "#" {
+                num_neighbors += 1;
+            }
+            if grid[right][below] == "#" {
+                num_neighbors += 1;
+            }
+
+            // Set cell based on Conway's Game of Life rules:
+            match (grid[x][y].as_ref(), num_neighbors) {
+                ("#", 2|3) => next_cells[x][y] = String::from("#"),
+                ("_", 3) => next_cells[x][y] = String::from("#"),
+                _ => next_cells[x][y] = String::from("_")
+            }
         }
     }
 
