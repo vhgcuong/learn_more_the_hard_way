@@ -5,7 +5,7 @@ mod conway;
 
 fn main() {
     println!("Zigzag: 1");
-    println!("Conway: 1");
+    println!("Conway: 2");
 
 
     let mut input = String::new();
@@ -27,7 +27,9 @@ fn main() {
         1 => zigzag::zigzag(),
         2 => {
             let grid = conway::generate_grid(10, 10);
-            conway::print_grid(grid);
+            conway::print_grid(grid.clone());
+            let next_grid = conway::calculate(grid);
+            conway::print_grid(next_grid);
         },
         _ => return
     }
