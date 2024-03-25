@@ -83,10 +83,10 @@ pub fn calculate(grid: &Vec<Vec<String>>) -> Vec<Vec<String>> {
             }
 
             // // Set cell based on Conway's Game of Life rules:
-            match (grid[x][y].as_ref(), num_neighbors) {
-                ("#", 2|3) => next_cells[x][y] = String::from("#"),
-                ("_", 3) => next_cells[x][y] = String::from("#"),
-                _ => next_cells[x][y] = String::from("_")
+            next_cells[x][y] = match (grid[x][y].as_ref(), num_neighbors) {
+                ("#", 2|3) => String::from("#"),
+                ("_", 3) => String::from("#"),
+                _ => String::from("_")
             }
         }
     }
@@ -96,17 +96,16 @@ pub fn calculate(grid: &Vec<Vec<String>>) -> Vec<Vec<String>> {
 
 pub fn input_data() -> Vec<i32> {
     println!("Width - Height: ");
-
     let mut data: Vec<i32> = vec![0, 0];
-    for i in 0..data.len() {
-        let mut input = String::new();
 
+    for i in 0..data.len() {
         print!("Nhap mot so nguyen: ");
+        let mut input = String::new();
         io::stdin()
             .read_line(&mut input)
             .expect("Khong the doc du lieu tu dong lenh");
 
-        let _ = match input.trim().parse::<i32>() {
+        match input.trim().parse::<i32>() {
             Ok(number) => data[i] = number,
             Err(_) => {
                 println!("Không thể chuyển đổi thành");
