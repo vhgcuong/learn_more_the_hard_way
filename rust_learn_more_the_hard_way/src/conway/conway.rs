@@ -1,7 +1,17 @@
-use std::{io, thread, time};
+use std::{
+    io::{self, Write},
+    thread,
+    time
+};
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 use rand::{thread_rng, Rng};
+
+static NEIGHBOURHOOD_OFFSETS: &[(i32, i32)] = &[
+    (-1, -1), (0, -1), (1, -1),
+    (-1,  0),          (1,  0),
+    (-1,  1), (0,  1), (1,  1),
+];
 
 pub fn generate_grid(width: i32, height: i32) -> Vec<Vec<String>> {
     let mut next_cells = vec![];
@@ -37,52 +47,22 @@ pub fn calculate(grid: &Vec<Vec<String>>) -> Vec<Vec<String>> {
 
     for x in 0..height {
         for y in 0..width {
-            // Get neighboring coordinates:
-            let left = ((x as i32 - 1) % width as i32) as usize ;
-            let right = (x + 1) % width;
-            let above = ((y as i32 - 1) % height as i32) as usize;
-            let below = (y + 1) % height;
-
-            // Count number of living neighbors:
             let mut num_neighbors = 0;
-            if left < width
-                && above < height
-                && grid[left][above] == "#" {
-                num_neighbors += 1;
-            }
-            if above < height
-                && grid[x][above] == "#" {
-                num_neighbors += 1;
-            }
-            if right < width
-                && above < height
-                && grid[right][above] == "#" {
-                num_neighbors += 1;
-            }
-            if left < width
-                && grid[left][y] == "#" {
-                num_neighbors += 1;
-            }
-            if right < width
-                && grid[right][y] == "#" {
-                num_neighbors += 1;
-            }
-            if left < width
-                && below < height
-                && grid[left][below] == "#" {
-                num_neighbors += 1;
-            }
-            if below < height
-                && grid[x][below] == "#" {
-                num_neighbors += 1;
-            }
-            if below < height
-                && right < height
-                && grid[right][below] == "#" {
-                num_neighbors += 1;
-            }
+            // Get neighboring coordinates:
+            NEIGHBOURHOOD_OFFSETS.iter().for_each(|&(ox, oy)| {
+                let nx = x as i32 + ox;
+                let ny = y as i32 + oy;
+                if nx >= 0
+                    && ny >= 0
+                    && nx < height as i32
+                    && ny < width as i32 {
+                    if grid[nx as usize][ny as usize] == "#" {
+                        num_neighbors += 1;
+                    }
+                }
+            });
 
-            // // Set cell based on Conway's Game of Life rules:
+            // Set cell based on Conway's Game of Life rules:
             next_cells[x][y] = match (grid[x][y].as_ref(), num_neighbors) {
                 ("#", 2|3) => String::from("#"),
                 ("_", 3) => String::from("#"),
@@ -95,11 +75,12 @@ pub fn calculate(grid: &Vec<Vec<String>>) -> Vec<Vec<String>> {
 }
 
 pub fn input_data() -> Vec<i32> {
-    println!("Width - Height: ");
     let mut data: Vec<i32> = vec![0, 0];
 
     for i in 0..data.len() {
-        print!("Nhap mot so nguyen: ");
+        print!("{}: ", if i == 0 {"Width"} else {"Height"});
+        io::stdout().flush().expect("Không thể flush stdout");
+
         let mut input = String::new();
         io::stdin()
             .read_line(&mut input)
@@ -136,6 +117,17 @@ pub fn game_of_life() {
     while running.load(Ordering::SeqCst) {
         grid = calculate(&grid);
         print_grid(&grid);
+
+        // Dừng khi tất cả đều chết
+        let pause = grid.iter().all(|row| {
+            row.iter().all(|cell| {
+                cell == "_"
+            })
+        });
+
+        if pause == true {
+            break;
+        }
     }
     println!("Got it! Exiting...");
 }
