@@ -25,12 +25,7 @@ fn main() {
 
     match input {
         1 => zigzag::zigzag(),
-        2 => {
-            let grid = conway::generate_grid(10, 10);
-            conway::print_grid(grid.clone());
-            let next_grid = conway::calculate(grid);
-            conway::print_grid(next_grid);
-        },
+        2 => conway::game_of_life(),
         _ => return
     }
 
