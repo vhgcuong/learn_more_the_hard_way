@@ -2,15 +2,16 @@ use std::io;
 
 mod zigzag;
 mod conway;
+mod coin_flip_streaks;
 
 fn main() {
-    println!("Zigzag: 1");
-    println!("Conway: 2");
-
+    println!("Zigzag:            1");
+    println!("Conway:            2");
+    println!("Coin Flip Streaks: 3");
 
     let mut input = String::new();
 
-    println!("Nhap mot so nguyen: ");
+    print!("Nhap mot so nguyen: ");
     io::stdin()
         .read_line(&mut input)
         .expect("Khong the doc du lieu tu dong lenh");
