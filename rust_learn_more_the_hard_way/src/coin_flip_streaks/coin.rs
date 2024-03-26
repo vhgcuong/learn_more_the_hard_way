@@ -2,7 +2,7 @@ use rand::{thread_rng, Rng};
 
 pub fn generate(number: u32) -> Vec<String> {
     let mut coin_flip_streaks: Vec<String> = vec![];
-    for index in 0..number {
+    for _ in 0..number {
         let mut rng = thread_rng();
         match rng.gen_range(0..=1) {
             1 => coin_flip_streaks.push(String::from("T")),
@@ -13,11 +13,33 @@ pub fn generate(number: u32) -> Vec<String> {
     coin_flip_streaks
 }
 
-pub fn consecutive_probabilities(number_of_consecutive: u32) -> f32 {
-    let mut probability: f32 = 0.0;
+pub fn consecutive_probabilities() {
+    let number = 100;
+    let slice = 6;
+    let amount = 10_000;
+    let mut quantity = 0;
 
+    let mut count_sub = 0;
 
-    probability
+    for _ in 0..amount {
+        let result = generate(number);
+        result.windows(slice).for_each(|sub| {
+            count_sub += 1;
+            let check = sub.iter().all(|chr| {
+                    chr == "H"
+                }) || sub.iter().all(|chr| {
+                    chr == "T"
+                });
+
+            if check == true {
+                quantity += 1;
+                println!("{:?}", sub);
+            }
+        });
+    }
+
+    println!("Không gian lặp: {amount}");
+    println!("Số lần thử: {number}");
+    println!("Ngửa và lật liên tiếp: {slice}");
+    println!("Kết quả: {:.2}", quantity as f32 / count_sub as f32);
 }
-
-
