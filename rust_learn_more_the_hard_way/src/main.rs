@@ -33,6 +33,4 @@ fn main() {
         3 => coin_flip_streaks::consecutive_probabilities(),
         _ => return
     }
-
-
 }

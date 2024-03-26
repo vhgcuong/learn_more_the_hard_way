@@ -24,17 +24,15 @@ pub fn consecutive_probabilities() {
     for _ in 0..amount {
         let result = generate(number);
         result.windows(slice).for_each(|sub| {
-            count_sub += 1;
-            let check = sub.iter().all(|chr| {
-                    chr == "H"
-                }) || sub.iter().all(|chr| {
-                    chr == "T"
-                });
+            let all_h = sub.iter().all(|chr| chr == "H");
+            let all_t = sub.iter().all(|chr| chr == "T" );
 
-            if check == true {
+            if all_h == true || all_t == true {
                 quantity += 1;
                 println!("{:?}", sub);
             }
+
+            count_sub += 1;
         });
     }
 
