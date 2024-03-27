@@ -4,6 +4,7 @@ pub fn call_puzzle() {
     println!("Three and a Bit:{:<9}1", " ");
     println!("Non-standard Input:{:<6}2", " ");
     println!("Type Conversion:{:<9}3", " ");
+    println!("Byte-Sized Chunks:{:<7}4", " ");
 
     println!("=====================================");
     print!("Lựa chọn puzzle: ");
@@ -25,6 +26,7 @@ pub fn call_puzzle() {
         1 => three_and_a_bit(),
         2 => standard_input(),
         3 => type_conversion(),
+        4 => byte_sized(),
         _ => {}
     }
 }
@@ -78,4 +80,12 @@ pub fn type_conversion() {
 
     let z32: u32 = (5000_u64).try_into().expect("Conversion error");
     println!("5000 u64 => u32 {z32}");
+}
+
+pub fn byte_sized() {
+    let mut counter: i8 = 0;
+    loop {
+        println!("{counter}");
+        counter += 1;
+    }
 }
