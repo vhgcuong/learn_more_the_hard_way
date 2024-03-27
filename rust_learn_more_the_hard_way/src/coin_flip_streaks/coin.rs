@@ -27,7 +27,7 @@ pub fn consecutive_probabilities() {
             let all_h = sub.iter().all(|chr| chr == "H");
             let all_t = sub.iter().all(|chr| chr == "T" );
 
-            if all_h == true || all_t == true {
+            if all_h || all_t {
                 quantity += 1;
                 println!("{:?}", sub);
             }

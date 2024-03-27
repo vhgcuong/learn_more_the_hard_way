@@ -3,6 +3,7 @@ use std::io::{self, stdin, Write};
 pub fn call_puzzle() {
     println!("Three and a Bit:{:<9}1", " ");
     println!("Non-standard Input:{:<6}2", " ");
+    println!("Type Conversion:{:<9}3", " ");
 
     println!("=====================================");
     print!("Lựa chọn puzzle: ");
@@ -23,6 +24,7 @@ pub fn call_puzzle() {
     match input {
         1 => three_and_a_bit(),
         2 => standard_input(),
+        3 => type_conversion(),
         _ => {}
     }
 }
@@ -54,6 +56,26 @@ pub fn standard_input() {
     }
 }
 
+///
+/// Puzzle 3
+///
+///
+pub fn type_conversion() {
+    let x: u64 = 4_294_967_296;
+    println!("x: {x}");
+    let y = x as u32;
+    println!("y: {y}");
+    if x == y as u64 {
+        println!("x equals y.");
+    } else {
+        println!("x does not equal y.");
+    }
 
+    let y32 = u32::MAX;
+    println!("y32: {y32}");
+    let y64: u64 = y32.into();
+    println!("y32: {y32} => y64: {y64}");
 
-
+    let z32: u32 = (5000_u64).try_into().expect("Conversion error");
+    println!("5000 u64 => u32 {z32}");
+}

@@ -34,6 +34,6 @@ fn main() {
         2 => conway::game_of_life(),
         3 => coin_flip_streaks::consecutive_probabilities(),
         4 => brain_teasers::call_puzzle(),
-        _ => return
+        _ => ()
     }
 }
