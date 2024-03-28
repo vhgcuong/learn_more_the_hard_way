@@ -39,11 +39,11 @@ pub fn print_grid(grid: &Vec<Vec<String>>) {
     println!();
 }
 
-pub fn calculate(grid: &Vec<Vec<String>>) -> Vec<Vec<String>> {
+pub fn calculate(grid: &[Vec<String>]) -> Vec<Vec<String>> {
     let height = grid.len();
     let width = grid[0].len();
     // Contractor vector
-    let mut next_cells = grid.clone();
+    let mut next_cells = grid.to_owned();
 
     for x in 0..height {
         for y in 0..width {
@@ -55,10 +55,9 @@ pub fn calculate(grid: &Vec<Vec<String>>) -> Vec<Vec<String>> {
                 if nx >= 0
                     && ny >= 0
                     && nx < height as i32
-                    && ny < width as i32 {
-                    if grid[nx as usize][ny as usize] == "#" {
-                        num_neighbors += 1;
-                    }
+                    && ny < width as i32
+                    && grid[nx as usize][ny as usize] == "#" {
+                    num_neighbors += 1;
                 }
             });
 
@@ -77,7 +76,7 @@ pub fn calculate(grid: &Vec<Vec<String>>) -> Vec<Vec<String>> {
 pub fn input_data() -> Vec<i32> {
     let mut data: Vec<i32> = vec![0, 0];
 
-    for i in 0..data.len() {
+    for (i, item) in data.iter_mut().enumerate() {
         print!("{}: ", if i == 0 {"Width"} else {"Height"});
         io::stdout().flush().expect("Không thể flush stdout");
 
@@ -87,7 +86,7 @@ pub fn input_data() -> Vec<i32> {
             .expect("Khong the doc du lieu tu dong lenh");
 
         match input.trim().parse::<i32>() {
-            Ok(number) => data[i] = number,
+            Ok(number) => *item = number,
             Err(_) => {
                 println!("Không thể chuyển đổi thành");
                 break;
@@ -125,7 +124,7 @@ pub fn game_of_life() {
             })
         });
 
-        if pause == true {
+        if pause {
             break;
         }
     }

@@ -4,11 +4,13 @@ use std::io::Write;
 mod zigzag;
 mod conway;
 mod coin_flip_streaks;
+mod brain_teasers;
 
 fn main() {
     println!("Zigzag:{:<18}1", " ");
     println!("Conway:{:<18}2", " ");
     println!("Coin Flip Streaks:{:<7}3", " ");
+    println!("Brain Teasers:{:<11}4", " ");
 
     println!("=====================================");
     print!("Lựa chọn: ");
@@ -31,6 +33,7 @@ fn main() {
         1 => zigzag::zigzag(),
         2 => conway::game_of_life(),
         3 => coin_flip_streaks::consecutive_probabilities(),
-        _ => return
+        4 => brain_teasers::call_puzzle(),
+        _ => ()
     }
 }
