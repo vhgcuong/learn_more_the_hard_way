@@ -1,11 +1,12 @@
 use std::io::{self, stdin, Write};
 
 pub fn call_puzzle() {
-    println!("Three and a Bit:{:<9}1", " ");
-    println!("Non-standard Input:{:<6}2", " ");
-    println!("Type Conversion:{:<9}3", " ");
-    println!("Byte-Sized Chunks:{:<7}4", " ");
-    println!("How Long Is a String?:{:<3}5", " ");
+    println!("Three and a Bit:{:<13}1", " ");
+    println!("Non-standard Input:{:<10}2", " ");
+    println!("Type Conversion:{:<13}3", " ");
+    println!("Byte-Sized Chunks:{:<11}4", " ");
+    println!("How Long Is a String?:{:<7}5", " ");
+    println!("Please Reboot the Universe:{:<2}6", " ");
 
     println!("=====================================");
     print!("Lựa chọn puzzle: ");
@@ -29,6 +30,7 @@ pub fn call_puzzle() {
         3 => type_conversion(),
         4 => byte_sized(),
         5 => string_length(),
+        6 => reboot_universe(),
         _ => {}
     }
 }
@@ -91,7 +93,7 @@ pub fn byte_sized() {
     let mut counter: i8 = 0;
     loop {
         println!("{counter}");
-        if let Some(_) = counter.checked_add(1) {
+        if counter.checked_add(1).is_some() {
             counter += 1;
         } else {
             break;
@@ -104,7 +106,7 @@ pub fn byte_sized() {
 ///
 ///
 
-const HELLO_WORLD: &'static str = "Halló heimur";
+const HELLO_WORLD: &str = "Halló heimur";
 pub fn string_length() {
     println!("{} is {} characters long.",
              HELLO_WORLD,
@@ -114,4 +116,15 @@ pub fn string_length() {
              HELLO_WORLD,
              HELLO_WORLD.chars().count()
     );
+}
+
+///
+/// Puzzle 6
+///
+pub fn reboot_universe() {
+    if 0.1 + 0.2 == 0.3 {
+        println!("Arithmetic still works.");
+    } else {
+        println!("Please reboot the universe.")
+    }
 }
