@@ -5,6 +5,7 @@ pub fn call_puzzle() {
     println!("Non-standard Input:{:<6}2", " ");
     println!("Type Conversion:{:<9}3", " ");
     println!("Byte-Sized Chunks:{:<7}4", " ");
+    println!("How Long Is a String?:{:<3}5", " ");
 
     println!("=====================================");
     print!("Lựa chọn puzzle: ");
@@ -27,6 +28,7 @@ pub fn call_puzzle() {
         2 => standard_input(),
         3 => type_conversion(),
         4 => byte_sized(),
+        5 => string_length(),
         _ => {}
     }
 }
@@ -82,6 +84,9 @@ pub fn type_conversion() {
     println!("5000 u64 => u32 {z32}");
 }
 
+///
+/// Puzzle 4
+///
 pub fn byte_sized() {
     let mut counter: i8 = 0;
     loop {
@@ -92,4 +97,21 @@ pub fn byte_sized() {
             break;
         }
     }
+}
+
+///
+/// Puzzle 5
+///
+///
+
+const HELLO_WORLD: &'static str = "Halló heimur";
+pub fn string_length() {
+    println!("{} is {} characters long.",
+             HELLO_WORLD,
+             HELLO_WORLD.len()
+    );
+    println!("{} is {} characters long.",
+             HELLO_WORLD,
+             HELLO_WORLD.chars().count()
+    );
 }
