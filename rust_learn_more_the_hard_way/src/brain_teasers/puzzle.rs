@@ -86,6 +86,10 @@ pub fn byte_sized() {
     let mut counter: i8 = 0;
     loop {
         println!("{counter}");
-        counter += 1;
+        if let Some(_) = counter.checked_add(1) {
+            counter += 1;
+        } else {
+            break;
+        }
     }
 }
