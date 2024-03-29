@@ -1,4 +1,5 @@
 use std::io::{self, stdin, Write};
+use std::f32::consts::PI;
 
 pub fn call_puzzle() {
     println!("Three and a Bit:{:<13}1", " ");
@@ -7,6 +8,7 @@ pub fn call_puzzle() {
     println!("Byte-Sized Chunks:{:<11}4", " ");
     println!("How Long Is a String?:{:<7}5", " ");
     println!("Please Reboot the Universe:{:<2}6", " ");
+    println!("There and Back Again:{:<8}7", " ");
 
     println!("=====================================");
     print!("Lựa chọn puzzle: ");
@@ -31,6 +33,7 @@ pub fn call_puzzle() {
         4 => byte_sized(),
         5 => string_length(),
         6 => reboot_universe(),
+        7 => there_and_back(),
         _ => {}
     }
 }
@@ -127,4 +130,27 @@ pub fn reboot_universe() {
     } else {
         println!("Please reboot the universe.")
     }
+}
+
+
+
+
+pub struct Degrees(pub f32);
+pub struct Radians(pub f32);
+
+impl Degrees {
+    pub fn new(angle: f32) -> Self {
+        Self(angle)
+    }
+}
+
+impl From<Degrees> for Radians {
+    fn from(item: Degrees) -> Self {
+        Self(item.0 * PI / 180.0)
+    }
+}
+pub fn there_and_back() {
+    let one_eighty_degrees = Degrees::new(180.0);
+    let one_eighty_radians: Radians = one_eighty_degrees.into();
+    println!("180 Degrees in Radians = {}", one_eighty_radians.0);
 }
