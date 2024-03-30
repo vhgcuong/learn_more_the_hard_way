@@ -1,10 +1,14 @@
 use std::io::{self, stdin, Write};
+use std::f32::consts::PI;
 
 pub fn call_puzzle() {
-    println!("Three and a Bit:{:<9}1", " ");
-    println!("Non-standard Input:{:<6}2", " ");
-    println!("Type Conversion:{:<9}3", " ");
-    println!("Byte-Sized Chunks:{:<7}4", " ");
+    println!("Three and a Bit:{:<13}1", " ");
+    println!("Non-standard Input:{:<10}2", " ");
+    println!("Type Conversion:{:<13}3", " ");
+    println!("Byte-Sized Chunks:{:<11}4", " ");
+    println!("How Long Is a String?:{:<7}5", " ");
+    println!("Please Reboot the Universe:{:<2}6", " ");
+    println!("There and Back Again:{:<8}7", " ");
 
     println!("=====================================");
     print!("Lựa chọn puzzle: ");
@@ -27,6 +31,9 @@ pub fn call_puzzle() {
         2 => standard_input(),
         3 => type_conversion(),
         4 => byte_sized(),
+        5 => string_length(),
+        6 => reboot_universe(),
+        7 => there_and_back(),
         _ => {}
     }
 }
@@ -82,10 +89,71 @@ pub fn type_conversion() {
     println!("5000 u64 => u32 {z32}");
 }
 
+///
+/// Puzzle 4
+///
 pub fn byte_sized() {
     let mut counter: i8 = 0;
     loop {
         println!("{counter}");
-        counter += 1;
+        if counter.checked_add(1).is_some() {
+            counter += 1;
+        } else {
+            break;
+        }
     }
 }
+
+///
+/// Puzzle 5
+///
+///
+
+const HELLO_WORLD: &str = "Halló heimur";
+pub fn string_length() {
+    println!("{} is {} characters long.",
+             HELLO_WORLD,
+             HELLO_WORLD.len()
+    );
+    println!("{} is {} characters long.",
+             HELLO_WORLD,
+             HELLO_WORLD.chars().count()
+    );
+}
+
+///
+/// Puzzle 6
+///
+pub fn reboot_universe() {
+    if 0.1 + 0.2 == 0.3 {
+        println!("Arithmetic still works.");
+    } else {
+        println!("Please reboot the universe.")
+    }
+}
+
+
+///
+/// Puzzle 7
+///
+pub struct Degrees(pub f32);
+pub struct Radians(pub f32);
+
+impl Degrees {
+    pub fn new(angle: f32) -> Self {
+        Self(angle)
+    }
+}
+
+impl From<Degrees> for Radians {
+    fn from(item: Degrees) -> Self {
+        Self(item.0 * PI / 180.0)
+    }
+}
+pub fn there_and_back() {
+    let one_eighty_degrees = Degrees::new(180.0);
+    let one_eighty_radians: Radians = one_eighty_degrees.into();
+    println!("180 Degrees in Radians = {}", one_eighty_radians.0);
+}
+
+

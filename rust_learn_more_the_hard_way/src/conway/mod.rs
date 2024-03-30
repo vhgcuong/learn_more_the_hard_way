@@ -1,3 +1,3 @@
-mod conway;
+mod handle;
 
-pub use conway::game_of_life;
+pub use handle::game_of_life;
