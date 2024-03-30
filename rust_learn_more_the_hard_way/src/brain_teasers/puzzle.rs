@@ -133,8 +133,9 @@ pub fn reboot_universe() {
 }
 
 
-
-
+///
+/// Puzzle 7
+///
 pub struct Degrees(pub f32);
 pub struct Radians(pub f32);
 
@@ -154,3 +155,5 @@ pub fn there_and_back() {
     let one_eighty_radians: Radians = one_eighty_degrees.into();
     println!("180 Degrees in Radians = {}", one_eighty_radians.0);
 }
+
+
