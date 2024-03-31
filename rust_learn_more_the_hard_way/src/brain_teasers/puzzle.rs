@@ -2,15 +2,16 @@ use std::io::{self, stdin, Write};
 use std::f32::consts::PI;
 
 pub fn call_puzzle() {
-    println!("Three and a Bit:{:<13}1", " ");
-    println!("Non-standard Input:{:<10}2", " ");
-    println!("Type Conversion:{:<13}3", " ");
-    println!("Byte-Sized Chunks:{:<11}4", " ");
-    println!("How Long Is a String?:{:<7}5", " ");
-    println!("Please Reboot the Universe:{:<2}6", " ");
-    println!("There and Back Again:{:<8}7", " ");
+    println!("Three and a Bit:{:<30}1", " ");
+    println!("Non-standard Input:{:<27}2", " ");
+    println!("Type Conversion:{:<30}3", " ");
+    println!("Byte-Sized Chunks:{:<28}4", " ");
+    println!("How Long Is a String?:{:<24}5", " ");
+    println!("Please Reboot the Universe:{:<19}6", " ");
+    println!("There and Back Again:{:<25}7", " ");
+    println!("Walks Like a Duck, Quacks Like a Duck:{:<8}8", " ");
 
-    println!("=====================================");
+    println!("======================================================");
     print!("Lựa chọn puzzle: ");
     io::stdout().flush().expect("Không thể flush stdout");
     let mut input = String::new();
@@ -34,6 +35,7 @@ pub fn call_puzzle() {
         5 => string_length(),
         6 => reboot_universe(),
         7 => there_and_back(),
+        8 => quack(),
         _ => {}
     }
 }
@@ -157,4 +159,16 @@ pub fn there_and_back() {
     // println!("180 Degrees in Radians = {}", one_eighty_radians.0);
 }
 
+///
+/// Puzzle 8
+///
+pub fn double_it(n: u64, _: i32) -> u64 {
+    n * 2
+}
+
+pub fn quack() {
+    let one: i32 = 1;
+    let n = double_it(one as _, 3);
+    println!("{}", n);
+}
 

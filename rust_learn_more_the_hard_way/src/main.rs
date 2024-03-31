@@ -12,7 +12,7 @@ fn main() {
     println!("Coin Flip Streaks:{:<7}3", " ");
     println!("Brain Teasers:{:<11}4", " ");
 
-    println!("=====================================");
+    println!("======================================================");
     print!("Lựa chọn: ");
     io::stdout().flush().expect("Không thể flush stdout");
     let mut input = String::new();
@@ -27,7 +27,7 @@ fn main() {
             return
         }
     };
-    println!("=====================================");
+    println!("======================================================");
 
     match input {
         1 => zigzag::zigzag(),
