@@ -5,12 +5,14 @@ mod zigzag;
 mod conway;
 mod coin_flip_streaks;
 mod brain_teasers;
+mod exercise;
 
 fn main() {
     println!("Zigzag:{:<18}1", " ");
     println!("Conway:{:<18}2", " ");
     println!("Coin Flip Streaks:{:<7}3", " ");
     println!("Brain Teasers:{:<11}4", " ");
+    println!("Exercise:{:<16}5", " ");
 
     println!("=====================================");
     print!("Lựa chọn: ");
@@ -34,6 +36,7 @@ fn main() {
         2 => conway::game_of_life(),
         3 => coin_flip_streaks::consecutive_probabilities(),
         4 => brain_teasers::call_puzzle(),
+        5 => exercise::labels(),
         _ => ()
     }
 }
