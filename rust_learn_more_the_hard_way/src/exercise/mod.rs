@@ -1,3 +1,3 @@
-mod control_flow;
+mod day_one;
 
-pub use control_flow::labels;
+pub use day_one::run_day_one;
