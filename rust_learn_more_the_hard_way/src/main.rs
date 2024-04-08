@@ -1,5 +1,6 @@
 use std::io;
 use std::io::Write;
+use crate::coin_flip_streaks::CoinFlipSimulator;
 
 mod zigzag;
 mod conway;
@@ -34,7 +35,10 @@ fn main() {
     match input {
         1 => zigzag::zigzag(),
         2 => conway::game_of_life(),
-        3 => coin_flip_streaks::consecutive_probabilities(),
+        3 => {
+            let simulator = CoinFlipSimulator::new();
+            simulator.probability_of_occurrence();
+        },
         4 => brain_teasers::call_puzzle(),
         5 => exercise::run_day_one(),
         _ => ()
