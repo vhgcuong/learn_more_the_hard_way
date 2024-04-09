@@ -7,6 +7,7 @@ mod conway;
 mod coin_flip_streaks;
 mod brain_teasers;
 mod exercise;
+mod rusqlite_con;
 
 fn main() {
     println!("Zigzag:{:<18}1", " ");
