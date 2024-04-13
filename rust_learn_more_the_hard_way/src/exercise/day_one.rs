@@ -5,6 +5,7 @@ pub fn run_day_one() {
     println!("Loops:{:<19}1", " ");
     println!("Functions:{:<15}2", " ");
     println!("Macro:{:<19}3", " ");
+    println!("Collatz Sequence:{:<8}4", " ");
 
     println!("=====================================");
     print!("Lựa chọn: ");
@@ -27,6 +28,7 @@ pub fn run_day_one() {
         1 => labels(),
         2 => println!("{}", gcd(100, 40)),
         3 => println!("{}", factorial(10)),
+        4 => println!("{}", collatz_length(11)),
         _ => ()
     }
 }
@@ -67,4 +69,14 @@ pub fn factorial(n: u32) -> u32 {
 
 pub fn fizzbuzz(n: u32) -> u32 {
     todo!()
+}
+
+pub fn collatz_length(mut n: i32) -> u32 {
+    let mut len = 1;
+    while n > 1 {
+        n = if n % 2 == 0 {n/2} else {3*n+1};
+        len += 1;
+    }
+
+    len
 }
