@@ -6,6 +6,7 @@ pub fn run_day_one() {
     println!("Functions:{:<15}2", " ");
     println!("Macro:{:<19}3", " ");
     println!("Collatz Sequence:{:<8}4", " ");
+    println!("Transpose:{:<15}5", " ");
 
     println!("=====================================");
     print!("Lựa chọn: ");
@@ -29,6 +30,7 @@ pub fn run_day_one() {
         2 => println!("{}", gcd(100, 40)),
         3 => println!("{}", factorial(10)),
         4 => println!("{}", collatz_length(11)),
+        5 => println!("{:?}", transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]])),
         _ => ()
     }
 }
@@ -79,4 +81,9 @@ pub fn collatz_length(mut n: i32) -> u32 {
     }
 
     len
+}
+
+pub fn transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
+    println!("{:?}", matrix);
+    unimplemented!()
 }
