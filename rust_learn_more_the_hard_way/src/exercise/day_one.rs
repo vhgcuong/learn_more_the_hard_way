@@ -30,7 +30,11 @@ pub fn run_day_one() {
         2 => println!("{}", gcd(100, 40)),
         3 => println!("{}", factorial(10)),
         4 => println!("{}", collatz_length(11)),
-        5 => println!("{:?}", transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]])),
+        5 => println!("{:?}", transpose(&vec![
+            vec![1, 2, 3],
+            vec![4, 5, 6],
+            vec![7, 8, 9]
+        ])),
         _ => ()
     }
 }
@@ -83,7 +87,22 @@ pub fn collatz_length(mut n: i32) -> u32 {
     len
 }
 
-pub fn transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
-    println!("{:?}", matrix);
-    unimplemented!()
+pub fn transpose(matrix: &Vec<Vec<i32>>) -> Vec<Vec<i32>>
+{
+    if matrix.is_empty() {
+        return vec![];
+    }
+
+    let rows = matrix.len();
+    let cols = matrix[0].len();
+
+    let mut result = vec![vec![0; rows]; cols];
+
+    for i in 0..rows {
+        for j in 0..cols {
+            result[j][i] = matrix[i][j];
+        }
+    }
+
+    result
 }
